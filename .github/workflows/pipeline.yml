@@ -1,0 +1,17 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: build-image
+      - run: |
+      docker login ghcr.io -u HarryLees --password-stdin
+      env:
+        CR_PAT: ${{ secrets.CR_PAT }}
