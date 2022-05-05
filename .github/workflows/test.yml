@@ -1,0 +1,17 @@
+name: test
+
+on: [push, pull_request]
+
+jobs:
+  flake8:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: setup
+        uses: actions/setup-python@v1
+      - name: flake8
+        run: python -m flake8
+  # mypy:
+  # pytest:
+  #   needs: [flake8, mypy]
