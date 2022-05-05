@@ -24,7 +24,7 @@ jobs:
     - name: install-deps
       run: poetry install
     - name: test
-      run: python -m flake8
+      run: poetry run flake8
   build:
     runs-on: ubuntu-latest
     permissions:
