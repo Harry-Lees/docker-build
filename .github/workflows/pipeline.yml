@@ -41,8 +41,9 @@ jobs:
     - name: install-deps
       run: poetry install
     - name: test
-      run: poetry run mypy
+      run: poetry run mypy run.py
   pytest:
+    needs: [flake8, mypy]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -64,7 +65,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    needs: flake8
+    needs: pytest
     steps:
       - name: checkout-repo
         uses: actions/checkout@v3
